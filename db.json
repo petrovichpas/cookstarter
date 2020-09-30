@@ -8,11 +8,5 @@
     { "id": "PizzaHut", "description": "Pizza Hut — сеть ресторанов." },
     { "id": "Vkusnyesushi", "description": "Vkusnyesushi — сеть ресторанов."  },
     { "id": "Mcdonalds", "description": "Mcdonalds — сеть ресторанов." }
-  ],
-  "profile": {
-    "name": "typicode",
-    "profile2": {
-    "name2": "typicode2"
-  }
-  }
+  ]
 }
