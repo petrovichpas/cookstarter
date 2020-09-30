@@ -1,0 +1,16 @@
+{
+  "restaurants": [
+    { "id": 1, "name": "PizzaHut" },
+    { "id": 2, "name": "Vkusnyesushi" },
+    { "id": 3, "name": "Mcdonalds" }
+  ],
+  "PizzaHut": [
+    { "id": 1, "description": "Pizza Hut — сеть ресторанов." }
+  ],
+  "Vkusnyesushi": [
+    { "id": 1, "description": "Vkusnyesushi — сеть ресторанов." }
+  ],
+  "Mcdonalds": [
+    { "id": 1, "description": "Mcdonalds — сеть ресторанов." }
+  ],
+}
