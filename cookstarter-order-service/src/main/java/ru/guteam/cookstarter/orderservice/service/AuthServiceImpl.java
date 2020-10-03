@@ -11,12 +11,11 @@ import ru.guteam.cookstarter.orderservice.exception.TokenNotActiveException;
 
 @Service
 @RequiredArgsConstructor
-public class AuthServiceImpl implements AuthService{
-
-    @Value("${app.customer-service.host}${app.customer-service.path.jwt-check}")
-    private String jwtCheckPath;
+public class AuthServiceImpl implements AuthService {
 
     private final RestTemplate restTemplate;
+    @Value("${app.customer-service.host}${app.customer-service.path.jwt-check}")
+    private String jwtCheckPath;
 
     public void checkToken(String token) {
         JwtCheckResponse response = restTemplate.postForObject(jwtCheckPath, new JwtCheckRequest(token), JwtCheckResponse.class);
