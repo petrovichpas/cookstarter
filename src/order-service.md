@@ -5,7 +5,7 @@
 **Добавление нового заказа**
 
 POST /orders/add
-```json
+```json5
 {
      "customerId": 42, //обязательно
      "restaurantId": 24, //обязательно
@@ -22,7 +22,7 @@ POST /orders/add
  }
 ```
 ответ
-```json
+```json5
 {
     "status": "OK",
     "id": "23" //id созданного заказа
@@ -32,7 +32,7 @@ POST /orders/add
 **Обновление заказа**
 
 POST /orders/update
-```json
+```json5
 {
     "id": 21, //обязательно
     "customerId": 42, //обязательно
@@ -52,7 +52,7 @@ POST /orders/update
 }
 ```
 ответ
-```json
+```json5
 {
     "status": "OK",
 }
@@ -63,7 +63,7 @@ POST /orders/update
 GET /orders/delete/{id}
 
 ответ
-```json
+```json5
 {
     "status": "OK",
 }
@@ -74,7 +74,7 @@ GET /orders/delete/{id}
 GET /orders/delete/item/{id}
 
 ответ
-```json
+```json5
 {
     "status": "OK",
 }
@@ -86,7 +86,7 @@ GET /orders/delete/item/{id}
 GET /orders/get/{id}
 
 ответ
-```json
+```json5
 {
     "id": 21,
     "customerId": 42,
@@ -113,7 +113,7 @@ GET /orders/get/{id}
 GET /orders/get/customer/{id}
 
 ответ
-```json
+```json5
 [
     {
         "id": 22,
@@ -161,7 +161,7 @@ GET /orders/get/customer/{id}
 GET /orders/get/restaurant/{id}
 
 ответ
-```json
+```json5
 [
     {
         "id": 22,
@@ -207,7 +207,7 @@ GET /orders/get/restaurant/{id}
 **Ошибки**
 
 *статус и сообщение, если ошибка известна*
-```json
+```json5
 {
     "status": "ERROR",
     "error": "Ошибка в запросе"
