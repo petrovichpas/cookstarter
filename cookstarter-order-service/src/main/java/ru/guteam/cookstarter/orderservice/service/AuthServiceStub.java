@@ -9,6 +9,7 @@ public class AuthServiceStub implements AuthService {
 
     @Override
     public void checkToken(String token) {
-
+        // заглушка customer service
+        // удалить класс после его реализации
     }
 }

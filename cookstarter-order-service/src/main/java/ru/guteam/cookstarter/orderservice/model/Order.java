@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.guteam.cookstarter.api.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.Map;
 
 @Entity
@@ -22,6 +24,9 @@ public class Order {
     private Long id;
     private Long customerId;
     private Long restaurantId;
+    private OrderStatus status;
+
+    private OffsetDateTime dateCreated;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @MapKeyColumn(name = "dish_id")

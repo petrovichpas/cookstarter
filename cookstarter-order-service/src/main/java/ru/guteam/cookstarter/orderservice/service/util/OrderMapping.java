@@ -46,6 +46,8 @@ public class OrderMapping {
                 .id(order.getId())
                 .customerId(order.getCustomerId())
                 .restaurantId(order.getRestaurantId())
+                .dateCreated(order.getDateCreated())
+                .status(order.getStatus())
                 .dishes(dishes.entrySet().stream()
                         .collect(Collectors.toMap(
                                 Map.Entry::getKey,

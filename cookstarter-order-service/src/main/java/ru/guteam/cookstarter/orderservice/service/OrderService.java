@@ -9,10 +9,14 @@ import ru.guteam.cookstarter.orderservice.model.Order;
 import ru.guteam.cookstarter.orderservice.model.OrderItem;
 import ru.guteam.cookstarter.orderservice.repository.OrderItemRepository;
 import ru.guteam.cookstarter.orderservice.repository.OrderRepository;
+import ru.guteam.cookstarter.orderservice.service.util.OrderMapping;
 
+import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static ru.guteam.cookstarter.api.enums.OrderStatus.SAVED;
 import static ru.guteam.cookstarter.orderservice.service.util.OrderMapping.toDto;
 import static ru.guteam.cookstarter.orderservice.service.util.OrderMapping.toOrder;
 
@@ -30,6 +34,8 @@ public class OrderService {
         if (order.getDishes().isEmpty()) {
             throw new OrderProcessingException("Список блюд пуст или количество равно нулю");
         }
+        order.setDateCreated(OffsetDateTime.now());
+        order.setStatus(SAVED);
         return orderRepository.save(order).getId();
     }
 
@@ -112,5 +118,19 @@ public class OrderService {
     private OrderItem getItemByIdOrThrowException(Long id) {
         return orderItemRepository.findById(id)
                 .orElseThrow(() -> new OrderProcessingException("Не найдено в заказах блюда id = " + id));
+    }
+
+    public List<OrderDto> getAllByCustomerId(Long id) {
+        checkIdIsNull(id);
+        return orderRepository.findAllByCustomerId(id).stream()
+                .map(OrderMapping::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<OrderDto> getAllByRestaurantId(Long id) {
+        checkIdIsNull(id);
+        return orderRepository.findAllByRestaurantId(id).stream()
+                .map(OrderMapping::toDto)
+                .collect(Collectors.toList());
     }
 }

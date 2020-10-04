@@ -9,6 +9,7 @@ import ru.guteam.cookstarter.orderservice.controller.util.StatusResponseBuilder;
 import ru.guteam.cookstarter.orderservice.service.OrderService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 import static ru.guteam.cookstarter.api.dto.RequestMessageHeaders.JWT_TOKEN_HEADER;
 
@@ -53,4 +54,15 @@ public class OrderController {
         return orderService.getById(id);
     }
 
+    @GetMapping("/get/customer/{id}")
+    public List<OrderDto> getAllByCustomerId(@PathVariable("id") Long id,
+                                             @RequestHeader(JWT_TOKEN_HEADER) String token) {
+        return orderService.getAllByCustomerId(id);
+    }
+
+    @GetMapping("/get/restaurant/{id}")
+    public List<OrderDto> getAllByRestaurantId(@PathVariable("id") Long id,
+                                               @RequestHeader(JWT_TOKEN_HEADER) String token) {
+        return orderService.getAllByRestaurantId(id);
+    }
 }
