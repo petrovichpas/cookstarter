@@ -2,7 +2,8 @@ package ru.guteam.cookstarter.api.enums;
 
 public enum OrderStatus {
     SAVED,
-    PAYED,
+    PAID,
+    IN_PROCESS,
     READY,
     COMPLETED
 }
