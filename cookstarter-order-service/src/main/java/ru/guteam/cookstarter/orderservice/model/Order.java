@@ -24,6 +24,7 @@ public class Order {
     private Long id;
     private Long customerId;
     private Long restaurantId;
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
     private OffsetDateTime dateCreated;
