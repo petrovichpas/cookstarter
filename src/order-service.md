@@ -84,7 +84,6 @@ GET /orders/delete/item/{id}
 ---
 **Получить информацию по заказу**
 
----
 GET /orders/get/{id}
 
 ответ
