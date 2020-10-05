@@ -19,6 +19,6 @@ spring:
 
 app:
   customer-service:
-    host: http://localhost:8081
+    host: http://localhost:8186
     path:
-      jwt-check: /token/check
+      jwt-check: /auth
