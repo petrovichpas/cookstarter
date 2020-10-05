@@ -10,11 +10,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import ru.guteam.customer_service.services.UsersService;
-import ru.guteam.customer_service.utils.UsernameAndPasswordWrapper;
-import ru.guteam.customer_service.utils.JwtWrapper;
+import ru.guteam.customer_service.utils.UsernameAndPassword;
 import ru.guteam.customer_service.utils.JwtTokenUtil;
-
-import java.util.List;
 
 
 @RestController
@@ -28,14 +25,15 @@ public class AuthController {
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public JwtWrapper createAuthToken(@RequestBody UsernameAndPasswordWrapper authRequest) {
+            public ResponseEntity<?> createAuthToken(@RequestBody UsernameAndPassword authRequest) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         } catch (BadCredentialsException e) {
-            System.out.println(e.getMessage());        }
+            return new ResponseEntity<>("Неверные логин или пароль", HttpStatus.UNAUTHORIZED);
+        }
         UserDetails userDetails = usersService.loadUserByUsername(authRequest.getUsername());
         String token = jwtTokenUtil.generateToken(userDetails);
-        return new JwtWrapper(token);
+        return new ResponseEntity<>(token, HttpStatus.OK);
     }
 
 }
