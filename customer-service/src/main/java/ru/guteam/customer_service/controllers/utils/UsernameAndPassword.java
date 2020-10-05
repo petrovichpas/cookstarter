@@ -1,4 +1,4 @@
-package ru.guteam.customer_service.utils;
+package ru.guteam.customer_service.controllers.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

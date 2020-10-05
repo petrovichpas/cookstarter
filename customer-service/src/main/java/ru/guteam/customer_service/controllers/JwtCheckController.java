@@ -9,7 +9,7 @@ import ru.guteam.customer_service.services.UsersService;
 import ru.guteam.customer_service.utils.JwtCheckRequest;
 import ru.guteam.customer_service.utils.JwtCheckResponse;
 import ru.guteam.customer_service.utils.JwtCheckStatus;
-import ru.guteam.customer_service.utils.JwtTokenUtil;
+import ru.guteam.customer_service.controllers.utils.JwtTokenUtil;
 
 import java.util.Optional;
 

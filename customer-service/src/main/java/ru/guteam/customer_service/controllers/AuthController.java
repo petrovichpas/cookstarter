@@ -10,8 +10,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import ru.guteam.customer_service.services.UsersService;
-import ru.guteam.customer_service.utils.UsernameAndPassword;
-import ru.guteam.customer_service.utils.JwtTokenUtil;
+import ru.guteam.customer_service.controllers.utils.UsernameAndPassword;
+import ru.guteam.customer_service.controllers.utils.JwtTokenUtil;
 
 
 @RestController
