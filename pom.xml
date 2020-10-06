@@ -8,14 +8,23 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <modules>
+        <module>cookstarter-model</module>
+        <module>cookstarter-order-service</module>
+    </modules>
+
     <groupId>ru.guteam</groupId>
     <artifactId>cookstarter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cookstarter</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Cookstarter</description>
+    <packaging>pom</packaging>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
+        <lombok.version>1.18.12</lombok.version>
+        <postgresql.version>42.2.14</postgresql.version>
     </properties>
 
     <dependencies>
@@ -31,6 +40,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
             <optional>true</optional>
         </dependency>
         <dependency>
