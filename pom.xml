@@ -8,12 +8,6 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <modules>
-        <module>cookstarter-model</module>
-        <module>cookstarter-order-service</module>
-    </modules>
-
     <groupId>ru.guteam</groupId>
     <artifactId>cookstarter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -21,11 +15,19 @@
     <description>Cookstarter</description>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>customer-service</module>
+    </modules>
+
     <properties>
         <java.version>11</java.version>
         <lombok.version>1.18.12</lombok.version>
         <postgresql.version>42.2.14</postgresql.version>
     </properties>
+
+    <modules>
+        <module>picture-service</module>
+    </modules>
 
     <dependencies>
         <dependency>
