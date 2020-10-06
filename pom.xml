@@ -25,6 +25,10 @@
         <postgresql.version>42.2.14</postgresql.version>
     </properties>
 
+    <modules>
+        <module>picture-service</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
