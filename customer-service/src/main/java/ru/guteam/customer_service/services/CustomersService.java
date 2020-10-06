@@ -1,7 +1,6 @@
 package ru.guteam.customer_service.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,19 +9,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.guteam.customer_service.entities.Customer;
 import ru.guteam.customer_service.entities.Role;
-import ru.guteam.customer_service.entities.User;
 import ru.guteam.customer_service.exceptions.ResourceNotFoundException;
-import ru.guteam.customer_service.repositories.UsersRepository;
+import ru.guteam.customer_service.repositories.CustomersRepository;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UsersService implements UserDetailsService {
-    private UsersRepository usersRepository;
+public class CustomersService implements UserDetailsService {
+    private CustomersRepository customersRepository;
     private RolesService rolesService;
     private PasswordEncoder passwordEncoder;
 
@@ -32,8 +30,8 @@ public class UsersService implements UserDetailsService {
     }
 
     @Autowired
-    public void setUsersRepository(UsersRepository usersRepository) {
-        this.usersRepository = usersRepository;
+    public void setUsersRepository(CustomersRepository customersRepository) {
+        this.customersRepository = customersRepository;
     }
 
     @Autowired
@@ -44,29 +42,29 @@ public class UsersService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = getUserByUsername(username);
-        return new org.springframework.security.core.userdetails.User(user.getPhone(), user.getPassword(), true,
-                true, true, user.isEnable(), mapRolesToAuthorities(user.getRoles()));
+        Customer customer = getUserByUsername(username);
+        return new org.springframework.security.core.userdetails.User(customer.getPhone(), customer.getPassword(), true,
+                true, true, customer.isEnable(), mapRolesToAuthorities(customer.getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
-    public User getUserByUsername(String username) throws UsernameNotFoundException {
-        return usersRepository.findOneByPhone(username).orElseThrow(() -> new UsernameNotFoundException("Invalid username"));
+    public Customer getUserByUsername(String username) throws UsernameNotFoundException {
+        return customersRepository.findOneByPhone(username).orElseThrow(() -> new UsernameNotFoundException("Invalid username"));
     }
 
-    public User findById(Long id) {
-        return usersRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Can't found user with id = " + id));
+    public Customer findById(Long id) {
+        return customersRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Can't found user with id = " + id));
     }
 
-    public User saveOrUpdate(User user) {
-        return usersRepository.save(user);
+    public Customer saveOrUpdate(Customer customer) {
+        return customersRepository.save(customer);
     }
 
-    public Optional<User> findByPhone(String phone) {
-        return usersRepository.findOneByPhone(phone);
+    public Optional<Customer> findByPhone(String phone) {
+        return customersRepository.findOneByPhone(phone);
     }
 
 //    @Transactional

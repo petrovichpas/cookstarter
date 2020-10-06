@@ -13,13 +13,11 @@ public class LoggingRequestAspect {
 
     @Before("execution(* ru.guteam.customer_service.controllers.AuthController.* (..))")
     public void logAuthRequest(JoinPoint joinPoint) {
-        System.out.println("Вызов метода: " + joinPoint.getSignature().getName());
         log.info("Вызов метода: " + joinPoint.getSignature().getName());
     }
 
     @Before("execution(* ru.guteam.customer_service.controllers.JwtCheckController.* (..))")
     public void logCheckRequest(JoinPoint joinPoint) {
-        System.out.println("Вызов метода: " + joinPoint.getSignature().getName());
         log.info("Вызов метода: " + joinPoint.getSignature().getName());
     }
 

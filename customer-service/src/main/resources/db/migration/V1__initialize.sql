@@ -1,5 +1,5 @@
-drop table if exists users;
-create table users (
+drop table if exists customers;
+create table customers (
   id                    bigserial,
   phone                 VARCHAR(30) not null UNIQUE,
   password              VARCHAR(80) not null,
@@ -17,13 +17,13 @@ create table roles (
   primary key (id)
 );
 
-drop table if exists users_roles;
-create table users_roles (
-  user_id               INT NOT NULL,
-  role_id               INT NOT NULL,
-  primary key (user_id, role_id),
-  FOREIGN KEY (user_id)
-  REFERENCES users (id),
+drop table if exists customers_roles;
+create table customers_roles (
+  customer_id             BIGINT NOT NULL,
+  role_id                 INT NOT NULL,
+  primary key (customer_id, role_id),
+  FOREIGN KEY (customer_id)
+  REFERENCES customers (id),
   FOREIGN KEY (role_id)
   REFERENCES roles (id)
 );
@@ -32,13 +32,13 @@ insert into roles (name)
 values
 ('ROLE_CUSTOMER'), ('ROLE_MANAGER'), ('ROLE_ADMIN');
 
-insert into users (phone, password, enable, first_name, last_name, email)
+insert into customers (phone, password, enable, first_name, last_name, email)
 values
 ('2','$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'true', 'admin','admin','admin@gmail.com'),
-('100','$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'true', 'user','user','user@gmail.com');
+('100','$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'true', 'customer','customer','customer@gmail.com');
 
 
-insert into users_roles (user_id, role_id)
+insert into customers_roles (customer_id, role_id)
 values
 (1, 1),
 (1, 2),

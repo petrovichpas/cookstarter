@@ -2,12 +2,12 @@ package ru.guteam.customer_service.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.guteam.customer_service.entities.User;
+import ru.guteam.customer_service.entities.Customer;
 
 import java.util.Optional;
 
 @Repository
-public interface UsersRepository extends JpaRepository<User, Long> {
-    Optional<User> findOneByPhone(String phone);
+public interface CustomersRepository extends JpaRepository<Customer, Long> {
+    Optional<Customer> findOneByPhone(String phone);
     boolean existsByPhone(String phone);
 }

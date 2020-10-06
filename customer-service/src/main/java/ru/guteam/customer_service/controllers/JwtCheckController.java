@@ -4,8 +4,8 @@ import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import ru.guteam.customer_service.entities.User;
-import ru.guteam.customer_service.services.UsersService;
+import ru.guteam.customer_service.entities.Customer;
+import ru.guteam.customer_service.services.CustomersService;
 import ru.guteam.customer_service.utils.JwtCheckRequest;
 import ru.guteam.customer_service.utils.JwtCheckResponse;
 import ru.guteam.customer_service.utils.JwtCheckStatus;
@@ -20,7 +20,7 @@ import java.util.Optional;
 public class JwtCheckController {
     private final JwtTokenUtil jwtTokenUtil;
 
-    private UsersService usersService;
+    private CustomersService customersService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -33,7 +33,7 @@ public class JwtCheckController {
         }
 
         if (username != null) {
-            Optional<User> user = usersService.findByPhone(username);
+            Optional<Customer> user = customersService.findByPhone(username);
             if (!user.isPresent() || !user.get().isEnable()) {
                 return new JwtCheckResponse(JwtCheckStatus.MISSED);
             }
