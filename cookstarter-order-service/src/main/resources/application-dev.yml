@@ -1,7 +1,5 @@
 server:
   port: 8080
-  servlet:
-    context-path: /
 
 spring:
   datasource:
@@ -9,7 +7,6 @@ spring:
     username: ouiuyxspmhinlw
     password: b515b4a35a18b1d548424a1d934c85963433e10cfbbcf46f76319c4a050b5057
     driver-class-name: org.postgresql.Driver
-
   jpa:
     show-sql: false
     hibernate:
@@ -21,5 +18,3 @@ spring:
 app:
   customer-service:
     host: http://localhost:8186
-    path:
-      jwt-check: /auth
