@@ -1,4 +1,4 @@
-package ru.guteam.web_application.configurations;
+package ru.landing.configurations;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

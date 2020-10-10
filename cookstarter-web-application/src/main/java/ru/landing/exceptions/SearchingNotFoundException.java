@@ -1,4 +1,4 @@
-package ru.guteam.web_application.exceptions;
+package ru.landing.exceptions;
 
 public class SearchingNotFoundException extends RuntimeException {
     public SearchingNotFoundException(String message) {

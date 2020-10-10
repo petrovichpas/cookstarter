@@ -1,4 +1,4 @@
-package ru.guteam.web_application.configurations;
+package ru.landing.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

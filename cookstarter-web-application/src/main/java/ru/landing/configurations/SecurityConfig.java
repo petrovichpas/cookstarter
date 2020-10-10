@@ -1,4 +1,4 @@
-package ru.guteam.web_application.configurations;
+package ru.landing.configurations;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Order(100)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
-    private final ru.guteam.web_application.configurations.JwtRequestFilter jwtRequestFilter;
+    private final ru.landing.configurations.JwtRequestFilter jwtRequestFilter;
 
     @Autowired
     public void setUserDetailsService(UserDetailsService userDetailsService) {

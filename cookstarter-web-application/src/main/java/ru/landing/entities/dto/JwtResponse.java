@@ -1,4 +1,4 @@
-package ru.guteam.web_application.entities.dto;
+package ru.landing.entities.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
