@@ -1,8 +1,8 @@
-package ru.guteam.web_application.repositories;
+package ru.landing.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import ru.guteam.web_application.entities.Customer;
+import ru.landing.entities.Customer;
 
 import java.util.Optional;
 

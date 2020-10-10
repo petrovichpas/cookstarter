@@ -1,4 +1,4 @@
-package ru.guteam.web_application.services;
+package ru.landing.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,10 +12,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.guteam.web_application.entities.Authority;
-import ru.guteam.web_application.entities.Customer;
-import ru.guteam.web_application.exceptions.SearchingNotFoundException;
-import ru.guteam.web_application.repositories.CustomerRepository;
+import ru.landing.entities.Authority;
+import ru.landing.entities.Customer;
+import ru.landing.exceptions.SearchingNotFoundException;
+import ru.landing.repositories.CustomerRepository;
 
 import java.util.Collection;
 import java.util.List;

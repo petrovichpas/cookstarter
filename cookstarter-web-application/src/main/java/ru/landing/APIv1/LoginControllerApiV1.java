@@ -1,4 +1,4 @@
-package ru.guteam.web_application.APIv1;
+package ru.landing.APIv1;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -6,11 +6,11 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import ru.guteam.web_application.configurations.JwtTokenUtil;
-import ru.guteam.web_application.entities.Customer;
-import ru.guteam.web_application.entities.dto.JwtRequest;
-import ru.guteam.web_application.entities.dto.JwtResponse;
-import ru.guteam.web_application.services.CustomerService;
+import ru.landing.configurations.JwtTokenUtil;
+import ru.landing.entities.Customer;
+import ru.landing.entities.dto.JwtRequest;
+import ru.landing.entities.dto.JwtResponse;
+import ru.landing.services.CustomerService;
 
 import java.util.List;
 

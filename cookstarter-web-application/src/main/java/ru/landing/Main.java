@@ -1,13 +1,13 @@
-package ru.guteam.web_application;
+package ru.landing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WebApplication {
+public class Main {
 
     public static void main(String[] args) {
-        SpringApplication.run(WebApplication.class, args);
+        SpringApplication.run(Main.class, args);
     }
 
 }

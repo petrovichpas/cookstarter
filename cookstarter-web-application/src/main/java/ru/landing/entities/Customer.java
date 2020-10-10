@@ -1,4 +1,4 @@
-package ru.guteam.web_application.entities;
+package ru.landing.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
