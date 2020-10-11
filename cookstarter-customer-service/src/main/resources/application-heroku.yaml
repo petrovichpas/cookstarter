@@ -16,7 +16,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
-        default_schema: customers
+        default_schema: users
   jackson:
   serialization:
     indent_output: true

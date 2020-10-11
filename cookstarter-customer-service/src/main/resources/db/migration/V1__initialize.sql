@@ -1,46 +1,51 @@
-drop table if exists customers;
-create table customers (
-  id                    bigserial,
-  phone                 VARCHAR(30) not null UNIQUE,
-  password              VARCHAR(80) not null,
-  enable                boolean,
-  email                 VARCHAR(50) UNIQUE,
-  first_name            VARCHAR(50),
-  last_name             VARCHAR(50),
-  PRIMARY KEY (id)
+drop table if exists users.customers;
+create table users.customers (
+id                    bigserial,
+email                 varchar(50) UNIQUE,
+first_name            varchar(50),
+last_name             varchar(50),
+
+PRIMARY KEY (id)
 );
 
-drop table if exists roles;
-create table roles (
-  id                    serial,
-  name                  VARCHAR(50) not null,
-  primary key (id)
+drop table if exists users.roles;
+create table users.roles (
+id                    serial,
+name                  varchar(50) not null,
+
+PRIMARY KEY (id)
 );
 
-drop table if exists customers_roles;
-create table customers_roles (
-  customer_id             BIGINT NOT NULL,
-  role_id                 INT NOT NULL,
-  primary key (customer_id, role_id),
-  FOREIGN KEY (customer_id)
-  REFERENCES customers (id),
-  FOREIGN KEY (role_id)
-  REFERENCES roles (id)
+drop table if exists users.users;
+create table users.users (
+id                    bigserial,
+user_type             varchar(10) not null,
+user_id               bigint not null,
+username              varchar(30) not null UNIQUE,
+password              varchar(80) not null,
+role_id               int not null,
+enable                boolean,
+
+PRIMARY KEY (id),
+constraint fk_role_id foreign key (role_id) references users.roles (id)
 );
 
-insert into roles (name)
-values
-('ROLE_CUSTOMER'), ('ROLE_MANAGER'), ('ROLE_ADMIN');
-
-insert into customers (phone, password, enable, first_name, last_name, email)
-values
-('2','$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'true', 'admin','admin','admin@gmail.com'),
-('100','$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', 'true', 'customer','customer','customer@gmail.com');
 
 
-insert into customers_roles (customer_id, role_id)
+
+insert into users.roles (name)
 values
-(1, 1),
-(1, 2),
-(1, 3),
-(2, 1);
+('CUSTOMER'), ('RESTAURANT_MANAGER'), ('RESTAURANT_ADMIN');
+
+insert into users.customers (email, first_name, last_name)
+values
+('admin@gmail.com', 'admin','admin'),
+('customer@gmail.com', 'customer','customer');
+
+
+insert into users.users (id, user_type, user_id, username, password, role_id, enable)
+values
+(1, 'C', 1, '100', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', '1', 'true'),
+(2, 'C', 2, '200', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', '1', 'true'),
+(3, 'R', 304, '1', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', '2', 'true'),
+(4, 'R', 405, '2', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', '3', 'true');
