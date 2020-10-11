@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsernameAndPassword {
-    private String username;
-    private String password;
+public class JwtCheckRequest {
+    @NotNull
+    private String token;
 }
