@@ -12,7 +12,7 @@ spring:
           use_jdbc_metadata_defaults: false
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=customers
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=users
     username: postgres
     password: admin
   jackson:
