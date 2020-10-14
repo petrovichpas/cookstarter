@@ -1,7 +1,5 @@
 server:
   port: 8080
-  servlet:
-    context-path: /
 
 spring:
   datasource:
@@ -21,5 +19,3 @@ spring:
 app:
   customer-service:
     host: http://localhost:8186
-    path:
-      jwt-check: /auth
