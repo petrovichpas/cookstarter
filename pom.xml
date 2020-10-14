@@ -8,6 +8,12 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <modules>
+        <module>cookstarter-model</module>
+        <module>cookstarter-order-service</module>
+    </modules>
+
     <groupId>ru.guteam</groupId>
     <artifactId>cookstarter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
