@@ -8,29 +8,20 @@
         <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
-    <modules>
-        <module>cookstarter-model</module>
-        <module>cookstarter-order-service</module>
-    </modules>
-
     <groupId>ru.guteam</groupId>
-    <artifactId>cookstarter</artifactId>
+    <artifactId>picture-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cookstarter</name>
-    <description>Cookstarter</description>
-    <packaging>pom</packaging>
+    <name>picture-service</name>
+    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>11</java.version>
-        <lombok.version>1.18.12</lombok.version>
-        <postgresql.version>42.2.14</postgresql.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,11 +29,11 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <optional>true</optional>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

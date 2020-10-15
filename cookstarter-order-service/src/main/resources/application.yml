@@ -1,0 +1,8 @@
+server:
+  servlet:
+    context-path: /
+
+app:
+  customer-service:
+    path:
+      jwt-check: /check
