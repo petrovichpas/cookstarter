@@ -25,7 +25,7 @@ public class CustomersService {
 
     @Transactional
     public Customer saveBySystemCustomer(SystemCustomer systemCustomer) {
-        Customer customer = new Customer();
+        final Customer customer = new Customer();
         customer.setFirstName(systemCustomer.getFirstName());
         customer.setLastName(systemCustomer.getLastName());
         customer.setEmail(systemCustomer.getEmail());

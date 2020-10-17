@@ -3,6 +3,7 @@ package ru.guteam.customer_service.controllers;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.guteam.customer_service.controllers.utils.JwtCheckRequest;
@@ -17,11 +18,11 @@ import java.util.Optional;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/check")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class JwtCheckController {
     private final JwtTokenUtil jwtTokenUtil;
 
-    private UsersService usersService;
+    private final UsersService usersService;
 
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
