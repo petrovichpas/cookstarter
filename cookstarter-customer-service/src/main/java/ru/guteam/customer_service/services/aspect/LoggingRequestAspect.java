@@ -6,8 +6,8 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.context.annotation.Configuration;
-import ru.guteam.customer_service.controllers.utils.JwtCheckRequest;
-import ru.guteam.customer_service.controllers.utils.JwtCheckResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import ru.guteam.customer_service.controllers.utils.UsernameAndPasswordRequest;
 
 @Slf4j
@@ -22,17 +22,14 @@ public class LoggingRequestAspect {
                 " и паролем: " + request.getPassword());
     }
 
-    @Before("execution(* ru.guteam.customer_service.controllers.JwtCheckController.* (..))")
-    public void logCheckRequest(JoinPoint joinPoint) {
-        JwtCheckRequest request = (JwtCheckRequest) joinPoint.getArgs()[0];
-        log.info("Запрос на проверку токена: " + request.getToken());
-    }
-
-    @AfterReturning(pointcut = "execution(* ru.guteam.customer_service.controllers.JwtCheckController.* (..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* ru.guteam.customer_service.controllers.AuthController.* (..))", returning = "result")
     public void logCheckResponse(JoinPoint joinPoint, Object result) {
-        JwtCheckResponse response = (JwtCheckResponse) result;
+        ResponseEntity response = (ResponseEntity) result;
+        if (response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)){
+            log.info("Пользователь с логином: " + authRequest.getUsername() +
+                    " и паролем: " + authRequest.getPassword() + " не обнаружен");    }
+        }
         JwtCheckRequest request = (JwtCheckRequest) joinPoint.getArgs()[0];
-        log.info("Для токена: " + request.getToken() + " возвращен статус: " + response.getStatus());
-    }
+
 
 }

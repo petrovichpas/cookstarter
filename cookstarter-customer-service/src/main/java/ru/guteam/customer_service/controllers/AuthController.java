@@ -10,7 +10,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
-import ru.guteam.customer_service.controllers.utils.JwtCheckRequest;
 import ru.guteam.customer_service.controllers.utils.UsernameAndPasswordRequest;
 import ru.guteam.customer_service.controllers.utils.JwtTokenUtil;
 import ru.guteam.customer_service.services.UsersService;
@@ -30,8 +29,6 @@ public class AuthController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         } catch (BadCredentialsException e) {
-            log.info("Пользователь с логином: " + authRequest.getUsername() +
-                    " и паролем: " + authRequest.getPassword() + " не обнаружен");
             return new ResponseEntity<>("Неверные логин или пароль", HttpStatus.UNAUTHORIZED);
         }
         UserDetails userDetails = usersService.loadUserByUsername(authRequest.getUsername());
