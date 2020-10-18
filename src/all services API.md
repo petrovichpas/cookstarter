@@ -42,7 +42,7 @@ POST /reg/restaurant
 
 **Аутентификация пользователя**
 
-POST /reg/restaurant
+POST /auth
 ```json5
 {
      "username": 'string', //обязательно,
