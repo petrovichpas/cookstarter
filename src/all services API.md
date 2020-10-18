@@ -101,13 +101,154 @@ POST /restaurant/add
 }
 ```
 
+**Обновление карточки ресторана**
+
+POST /restaurant/update
+```json5
+{
+     "name": 'string', 
+     "description": 'string', 
+     "contact": {
+          "address": 'string',
+          "phone": 'string',
+          "location": 'string',
+          "mail": 'string',
+          "website": 'string',
+     },
+
+     "menu": { 
+          "dish1": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 10 
+           },
+          "dish2": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 11 // dish picture_id
+          }
+     },
+     "picture": 1 // restaurant picture_id
+ }
+```
+ответ
+```json5
+{
+    "status": "OK",
+}
+```
+
+
+**Получение карточки ресторана**
+
+GET /restaurant/get/{id}
+
+ответ
+```json5
+{
+     "name": 'string', 
+     "description": 'string', 
+     "contact": {
+          "address": 'string',
+          "phone": 'string',
+          "location": 'string',
+          "mail": 'string',
+          "website": 'string',
+     },
+
+     "menu": { 
+          "dish1": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 10 
+           },
+          "dish2": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 11 // dish picture_id
+          }
+     },
+     "picture": 1 // restaurant picture_id
+ }
+```
+
+**Удаление карточки ресторана**
+
+GET /restaurant/delete/{id}
+
+ответ
+```json5
+{
+     "status": 'ok', 
+          
+ }
+```
+
+
+
 
 ### Picture service API
 
 Любой запрос должен содержать header "jwt-token" с токеном, полученным при авторизации.
 
 
+**Добавление картинки**
 
+POST /picture/add
+    ---файл---
+ответ
+```json5
+{
+    "status": "OK",
+    "id": 1
+}
+```
+
+**Обновление картнинки**
+
+POST /picture/update
+```json5
+{
+     "id": 1
+ }
+```
+ответ
+```json5
+{
+    "status": "OK",
+    "id": 1
+}
+```
+
+
+**Получение картинки**
+
+GET /picture/get/{id}
+
+ответ
+    ---файл---
+```json5
+{
+     "status": 'ok', 
+          
+ }
+```
+
+**Удаление картинки**
+
+GET /picture/delete/{id}
+
+ответ
+```json5
+{
+     "status": 'ok', 
+          
+ }
+```
 
 
 ### Order service API
