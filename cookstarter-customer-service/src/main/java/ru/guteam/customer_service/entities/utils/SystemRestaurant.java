@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 public class SystemRestaurant {
 
     @NotNull
-    private Long restaurantId;
+    private Long id;
     @NotNull
     private String username;
     @NotNull
