@@ -30,7 +30,7 @@ public class LoggingRequestAspect {
             log.info("Пользователь с логином: " + authRequest.getUsername() +
                     " и паролем: " + authRequest.getPassword() + " не обнаружен");
         }
-        if (response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)) {
+        if (response.getStatusCode().equals(HttpStatus.OK)) {
             log.info("Для пользователя с логином: " + authRequest.getUsername() +
                     " и паролем: " + authRequest.getPassword() + " сгенерирован токен: " + response.getBody().toString());
         }
