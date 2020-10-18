@@ -40,6 +40,24 @@ POST /reg/restaurant
 }
 ```
 
+**Аутентификация пользователя**
+
+POST /reg/restaurant
+```json5
+{
+     "username": 'string', //обязательно,
+     "password": 'string', //обязательно
+ }
+```
+ответ
+```json5
+{
+    "status": "OK",
+    "jwt token": "token"
+
+}
+```
+
 ### Restaurant service API
 
 Любой запрос должен содержать header "jwt-token" с токеном, полученным при авторизации.
