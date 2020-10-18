@@ -33,8 +33,6 @@ public class AuthController {
         }
         UserDetails userDetails = usersService.loadUserByUsername(authRequest.getUsername());
         String token = jwtTokenUtil.generateToken(userDetails);
-        log.info("Для пользователя с логином: " + authRequest.getUsername() +
-                " и паролем: " + authRequest.getPassword() + " сгенерирован токен: " + token);
         return new ResponseEntity<>(token, HttpStatus.OK);
     }
 

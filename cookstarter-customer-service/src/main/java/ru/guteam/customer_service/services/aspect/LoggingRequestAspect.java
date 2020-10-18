@@ -25,11 +25,15 @@ public class LoggingRequestAspect {
     @AfterReturning(pointcut = "execution(* ru.guteam.customer_service.controllers.AuthController.* (..))", returning = "result")
     public void logCheckResponse(JoinPoint joinPoint, Object result) {
         ResponseEntity response = (ResponseEntity) result;
-        if (response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)){
+        UsernameAndPasswordRequest authRequest = (UsernameAndPasswordRequest) joinPoint.getArgs()[0];
+        if (response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)) {
             log.info("Пользователь с логином: " + authRequest.getUsername() +
-                    " и паролем: " + authRequest.getPassword() + " не обнаружен");    }
+                    " и паролем: " + authRequest.getPassword() + " не обнаружен");
         }
-        JwtCheckRequest request = (JwtCheckRequest) joinPoint.getArgs()[0];
-
+        if (response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)) {
+            log.info("Для пользователя с логином: " + authRequest.getUsername() +
+                    " и паролем: " + authRequest.getPassword() + " сгенерирован токен: " + response.getBody().toString());
+        }
+    }
 
 }
