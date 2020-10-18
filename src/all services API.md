@@ -53,7 +53,7 @@ POST /reg/restaurant
 ```json5
 {
     "status": "OK",
-    "jwt token": "token"
+    "jwt token": "token with user details and role"
 
 }
 ```
@@ -61,6 +61,45 @@ POST /reg/restaurant
 ### Restaurant service API
 
 Любой запрос должен содержать header "jwt-token" с токеном, полученным при авторизации.
+
+**Добавление карточки ресторана**
+
+POST /restaurant/add
+```json5
+{
+     "name": 'string', 
+     "description": 'string', 
+     "contact": {
+          "address": 'string',
+          "phone": 'string',
+          "location": 'string',
+          "mail": 'string',
+          "website": 'string',
+     },
+
+     "menu": { 
+          "dish1": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 10 
+           },
+          "dish2": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 11 // dish picture_id
+          }
+     },
+     "picture": 1 // restaurant picture_id
+ }
+```
+ответ
+```json5
+{
+    "status": "OK",
+}
+```
 
 
 ### Picture service API
