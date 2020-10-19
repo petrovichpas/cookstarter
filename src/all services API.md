@@ -53,7 +53,7 @@ POST /auth
 ```json5
 {
     "status": "OK",
-    "jwt token": "token with user details and role"
+    "token": "token with user details and role"
 
 }
 ```
@@ -210,12 +210,10 @@ POST /picture/add
 
 **Обновление картнинки**
 
-POST /picture/update
-```json5
-{
-     "id": 1
- }
-```
+POST /picture/update/{id}
+
+---файл---
+
 ответ
 ```json5
 {
