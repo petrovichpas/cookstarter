@@ -199,6 +199,7 @@ GET /restaurant/delete/{id}
 **Добавление картинки**
 
 POST /picture/add
+
     ---файл---
 ответ
 ```json5
@@ -212,7 +213,7 @@ POST /picture/add
 
 POST /picture/update/{id}
 
----файл---
+    ---файл---
 
 ответ
 ```json5
@@ -228,6 +229,7 @@ POST /picture/update/{id}
 GET /picture/get/{id}
 
 ответ
+
     ---файл---
 ```json5
 {
