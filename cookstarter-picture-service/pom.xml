@@ -8,7 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>picture-service</artifactId>
+    <artifactId>cookstarter-picture-service</artifactId>
     <name>cookstarter-picture-service</name>
     <description>Demo project for Spring Boot</description>
 
@@ -31,6 +31,11 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.16</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
         </dependency>
     </dependencies>
 
