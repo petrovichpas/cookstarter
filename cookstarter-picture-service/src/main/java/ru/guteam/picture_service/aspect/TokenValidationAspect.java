@@ -6,19 +6,20 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.context.annotation.Configuration;
-import ru.guteam.picture_service.service.AuthService;
+import ru.guteam.picture_service.service.JwtValidationService;
 
 @Slf4j
 @Aspect
 @Configuration
 @RequiredArgsConstructor
 public class TokenValidationAspect {
-    private final AuthService authService;
 
-    @Before("execution(* ru.guteam.picture_service.controller.* (*, java.lang.String))")
+    private final JwtValidationService jwtValidationService;
+
+    @Before("execution(* ru.guteam.picture_service.controller.*.* (*, java.lang.String, ..))")
     public void tokenCheck(JoinPoint joinPoint) {
         String token = (String) joinPoint.getArgs()[1];
-        log.info("Проверка токена: " + token);
-        authService.checkToken(token);
+        log.info("Проверка токена");
+        jwtValidationService.checkToken(token);
     }
 }
