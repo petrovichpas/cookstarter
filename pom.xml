@@ -16,7 +16,7 @@
         <module>cookstarter-bot</module>
         <module>cookstarter-picture-service</module>
         <module>cookstarter-restaurant-service</module>
-        <module>cookstarter-restaurant-web-service</module>/
+        <module>cookstarter-restaurant-web-service</module>
     </modules>
 
     <groupId>ru.guteam</groupId>
