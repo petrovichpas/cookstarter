@@ -19,7 +19,7 @@ public class ExceptionsHandler {
 
     @ExceptionHandler
     public ResponseEntity<?> exception(Exception e) {
-        log.error("Неизвестная ошибка", e);
-        return new ResponseEntity<>("Неизвестная ошибка", HttpStatus.INTERNAL_SERVER_ERROR);
+        log.error("Что-то пошло не так. Пожалуйста, обратитесь в техническую поддержку", e);
+        return new ResponseEntity<>("Что-то пошло не так. Пожалуйста, обратитесь в техническую поддержку", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
