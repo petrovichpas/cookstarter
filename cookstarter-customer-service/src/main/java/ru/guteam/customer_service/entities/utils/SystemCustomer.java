@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @NoArgsConstructor
-@FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
+@FieldMatch(first = "pass1", second = "pass2", message = "The password fields must match")
 public class SystemCustomer {
 
     @NotNull(message = "This field is required")
@@ -20,11 +20,11 @@ public class SystemCustomer {
 
     @NotNull(message = "This field is required")
     @Size(min = 4, message = "Password is too short")
-    private String password;
+    private String pass1;
 
     @NotNull(message = "This field is required")
     @Size(min = 4, message = "Password is too short")
-    private String matchingPassword;
+    private String pass2;
 
     @NotNull(message = "This field is required")
     private String firstName;

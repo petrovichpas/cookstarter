@@ -8,6 +8,7 @@
         <groupId>ru.guteam</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <artifactId>cookstarter-customer-service</artifactId>
     <name>cookstarter-customer-service</name>
     <description>Cookstarter customer service</description>
