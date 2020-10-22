@@ -45,5 +45,4 @@ public class RestaurantsController {
         logger.info(restaurant.toString());
         restaurantService.deleteRestaurant(restaurant);
     }
-
 }
