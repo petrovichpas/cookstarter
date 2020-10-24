@@ -41,29 +41,20 @@ public class RegistrationController {
         // обсудить, по идее эта проверка дб отдельным запросом
         String username = systemRestaurant.getUsername();
         if (usersService.existsByUsername(username)) {
-            log.info("Невозможно зарегистрировать. Ресторан с логином: " + username + " уже сущесвует");
-            return new ResponseEntity<>("User with username: [" + username + "] is already exist", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Ресторан с логином: " + username + " уже существует", HttpStatus.CONFLICT);
         }
         usersService.saveRestaurant(systemRestaurant);
-        logSuccess(username, systemRestaurant.getPassword());
-        return new ResponseEntity<>(systemRestaurant, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping(value = "/customer", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> customerRegistration(@RequestBody @Valid SystemCustomer systemCustomer) {
         String username = systemCustomer.getUsername();
         if (usersService.existsByUsername(username)) {
-            log.info("Невозможно зарегистрировать. Клиент с логином: " + username + " уже сущесвует");
-            return new ResponseEntity<>("User with phone number: [" + username + "] is already exist", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Клиент с логином: " + username + " уже существует", HttpStatus.CONFLICT);
         }
         customersService.saveBySystemCustomer(systemCustomer);
-        logSuccess(username, systemCustomer.getPass1());
-        return new ResponseEntity<>(systemCustomer, HttpStatus.OK);
-    }
-
-    private void logSuccess(String username, String pass) {
-        log.info("Пользователь с логином: " + username +
-                " и паролем: " + pass + " зарегистрирован");
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
