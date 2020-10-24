@@ -14,8 +14,6 @@ import java.util.Map;
 
 @RestController
 public class RestClient {
-
-
     private final RestTemplate restTemplate;
 
     @Autowired
