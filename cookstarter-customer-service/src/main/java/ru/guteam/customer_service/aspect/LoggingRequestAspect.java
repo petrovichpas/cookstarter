@@ -1,4 +1,4 @@
-package ru.guteam.customer_service.controllers.utils;
+package ru.guteam.customer_service.aspect;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -8,6 +8,7 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import ru.guteam.customer_service.controllers.utils.TokenRequest;
 import ru.guteam.customer_service.entities.utils.SystemCustomer;
 import ru.guteam.customer_service.entities.utils.SystemRestaurant;
 
@@ -19,7 +20,7 @@ public class LoggingRequestAspect {
     // логирование попытки аутентификации пользователей
     @Before("execution(* ru.guteam.customer_service.controllers.AuthController.* (..))")
     public void logAuthRequest(JoinPoint joinPoint) {
-        UsernameAndPasswordRequest request = (UsernameAndPasswordRequest) joinPoint.getArgs()[0];
+        TokenRequest request = (TokenRequest) joinPoint.getArgs()[0];
         log.info("Запрос на аутентификацию пользователя с логином: " + request.getUsername() +
                 " и паролем: " + request.getPassword());
     }
@@ -28,7 +29,7 @@ public class LoggingRequestAspect {
     @AfterReturning(pointcut = "execution(* ru.guteam.customer_service.controllers.AuthController.* (..))", returning = "result")
     public void logAuthResponse(JoinPoint joinPoint, Object result) {
         ResponseEntity response = (ResponseEntity) result;
-        UsernameAndPasswordRequest authRequest = (UsernameAndPasswordRequest) joinPoint.getArgs()[0];
+        TokenRequest authRequest = (TokenRequest) joinPoint.getArgs()[0];
         if (response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)) {
             log.info("Пользователь с логином: " + authRequest.getUsername() +
                     " и паролем: " + authRequest.getPassword() + " не обнаружен");
@@ -50,7 +51,7 @@ public class LoggingRequestAspect {
     @Before("execution(* ru.guteam.customer_service.controllers.RegistrationController.restaurantRegistration(..))")
     public void logRestaurantRegRequest(JoinPoint joinPoint) {
         SystemRestaurant restaurant = (SystemRestaurant) joinPoint.getArgs()[0];
-        log.info("Запрос на регистрацию ресорана с логином: " + restaurant.getUsername());
+        log.info("Запрос на регистрацию ресторана с логином: " + restaurant.getUsername());
     }
 
     // логирование результатов регистрации ресторанов
@@ -59,24 +60,25 @@ public class LoggingRequestAspect {
         ResponseEntity response = (ResponseEntity) result;
         SystemCustomer customer = (SystemCustomer) joinPoint.getArgs()[0];
         if (response.getStatusCode().equals(HttpStatus.CONFLICT)) {
-            log.info("Невозможно зарегистрировать. Клиент с логином: " + customer.getUsername() + " уже сущесвует");
+            log.info("Невозможно зарегистрировать. Логин: " + customer.getUsername() + " и/или адрес электронной почты: " +
+                    customer.getEmail() + " уже существует.");
         }
         if (response.getStatusCode().equals(HttpStatus.OK)) {
-            log.info("Пользователь с логином: " + customer.getUsername() +
-                    " и паролем: " + customer.getPass1() + " зарегистрирован");
+            log.info("Клиент с логином: " + customer.getUsername() +
+                    " и паролем: " + customer.getPassword() + " зарегистрирован");
         }
     }
 
     // логирование результатов регистрации клиентов
-    @AfterReturning(pointcut = "execution(* ru.guteam.customer_service.controllers.RegistrationController.customerRegistration (..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* ru.guteam.customer_service.controllers.RegistrationController.restaurantRegistration (..))", returning = "result")
     public void logRestaurantRegResponse(JoinPoint joinPoint, Object result) {
         ResponseEntity response = (ResponseEntity) result;
         SystemRestaurant restaurant = (SystemRestaurant) joinPoint.getArgs()[0];
         if (response.getStatusCode().equals(HttpStatus.CONFLICT)) {
-            log.info("Невозможно зарегистрировать. Клиент с логином: " + restaurant.getUsername() + " уже сущесвует");
+            log.info("Невозможно зарегистрировать. Ресторан с логином: " + restaurant.getUsername() + " уже существует");
         }
         if (response.getStatusCode().equals(HttpStatus.OK)) {
-            log.info("Пользователь с логином: " + restaurant.getUsername() +
+            log.info("Ресторан с логином: " + restaurant.getUsername() +
                     " и паролем: " + restaurant.getPassword() + " зарегистрирован");
         }
     }
