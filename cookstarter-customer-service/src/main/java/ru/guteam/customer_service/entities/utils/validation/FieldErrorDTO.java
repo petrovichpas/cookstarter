@@ -1,4 +1,4 @@
-package ru.guteam.customer_service.entities.utils.validation.rest;
+package ru.guteam.customer_service.entities.utils.validation;
 
 import lombok.Data;
 
