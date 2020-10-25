@@ -14,7 +14,7 @@ public class RestClient {
         this.restTemplate = restTemplate;
     }
 
-    private String getToken(String username, String password, String url) {
+    public String getToken(String username, String password, String url) {
         AuthRequest authRequest = new AuthRequest(username, password);
 
         return restTemplate.postForObject(url, authRequest, String.class);

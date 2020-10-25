@@ -11,9 +11,9 @@ public class RestClientTest {
         RestTemplate restTemplate = new RestTemplate();
         RestClient restClient = new RestClient(restTemplate);
 
-//        String token = restClient.getToken("lol", "1234");
+        String token = restClient.getToken("100", "100", "http://localhost:8080/auth");
 
-//        System.out.println(token);
+        System.out.println(token);
     }
 
 }
