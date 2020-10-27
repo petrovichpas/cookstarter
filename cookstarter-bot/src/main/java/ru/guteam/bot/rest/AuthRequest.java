@@ -7,7 +7,6 @@ import lombok.NonNull;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class AuthRequest {
     @NonNull
     private String username;

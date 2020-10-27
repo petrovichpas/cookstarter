@@ -59,8 +59,39 @@ POST /auth
 ```
 
 ### Restaurant service API
+1) ресторан
+{
+     "name": 'string', 
+     "description": 'string', 
+     "contact": {
+          "address": 'string',
+          "phone": 'string',
+          "location": 'string',
+          "mail": 'string',
+          "website": 'string',
+     },
+     "picture": 1 // restaurant picture_id
+}
 
-Любой запрос должен содержать header "jwt-token" с токеном, полученным при авторизации.
+2) меню
+{ 
+          "dish1": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 10 
+           },
+          "dish2": {
+          "name": 'string',
+          "price": 0.99, 
+          "description": 'string', 
+          "picture": 11 // dish picture_id
+          }
+     }
+}
+тут нужно еще привязать меню к ресторану, но это что угодно на выбор - через pathvriable, через дополнительное поле в json
+
+Любой запрос должен содержать header "Authentication" с Bearer + токеном, полученным при авторизации.
 
 **Добавление карточки ресторана**
 
