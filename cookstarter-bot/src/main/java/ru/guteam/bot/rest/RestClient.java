@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 
-@RestController
+@Component
 public class RestClient {
     private final RestTemplate restTemplate;
 
@@ -14,9 +14,12 @@ public class RestClient {
         this.restTemplate = restTemplate;
     }
 
-    public String getToken(String username, String password, String url) {
+
+    private String getToken(String username, String password) {
         AuthRequest authRequest = new AuthRequest(username, password);
 
-        return restTemplate.postForObject(url, authRequest, String.class);
+        return restTemplate.postForObject("http://cookstarter-customer-service.herokuapp.com/auth",
+                                              authRequest, String.class);
+
     }
 }
